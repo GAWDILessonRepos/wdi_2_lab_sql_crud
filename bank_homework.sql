@@ -64,13 +64,12 @@ FROM payments;
 -- In a single query, select all payments created in the past week
 SELECT *
 FROM payments
-WHERE created_at > current_date - 7
-AND created_at < current_date;
+WHERE created_at BETWEEN current_date - 7 AND current_date;
 
 -- In a single query, select all payments with a blank description
 SELECT *
 FROM payments
-WHERE description IS NULL;
+WHERE description IS NULL OR description = '';
 
 -- In a single query, select all payments matching the name of one of the payers (choose any single one)
 SELECT *
